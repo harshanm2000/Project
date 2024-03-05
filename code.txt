@@ -1,0 +1,104 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+
+class Student {
+    private String name;
+    private String rollNumber;
+    private String contact;
+
+    // Constructor, getters, and setters
+}
+
+class Course {
+    private String code;
+    private String title;
+    private String description;
+
+    // Constructor, getters, and setters
+}
+
+class Grade {
+    private String courseCode;
+    private String studentRollNumber;
+    private double score;
+
+    // Constructor, getters, and setters
+}
+
+public class UniversityManagementSystem {
+    private Map<String, Student> students;
+    private Map<String, Course> courses;
+    private List<Grade> grades;
+
+    public UniversityManagementSystem() {
+        students = new HashMap<>();
+        courses = new HashMap<>();
+        grades = new ArrayList<>();
+    }
+
+    // Methods for student management
+    public void addStudent(Student student) {
+        students.put(student.getRollNumber(), student);
+    }
+
+    public Student getStudent(String rollNumber) {
+        return students.get(rollNumber);
+    }
+
+    // Methods for course management
+    public void addCourse(Course course) {
+        courses.put(course.getCode(), course);
+    }
+
+    public Course getCourse(String code) {
+        return courses.get(code);
+    }
+
+    // Method for grade management
+    public void addGrade(Grade grade) {
+        grades.add(grade);
+    }
+
+    // Other methods for authentication, reporting, etc.
+
+    public static void main(String[] args) {
+        UniversityManagementSystem system = new UniversityManagementSystem();
+        Scanner scanner = new Scanner(System.in);
+
+        // Example usage
+        System.out.println("Welcome to University Management System");
+
+        // Add students
+        Student student1 = new Student("John Doe", "2023001", "john@example.com");
+        system.addStudent(student1);
+
+        // Add courses
+        Course course1 = new Course("CS101", "Introduction to Computer Science", "Basic concepts of programming");
+        system.addCourse(course1);
+
+        // Add grades
+        Grade grade1 = new Grade("CS101", "2023001", 90.5);
+        system.addGrade(grade1);
+
+        // Example: Retrieve student details
+        System.out.print("Enter student roll number: ");
+        String rollNumber = scanner.next();
+        Student student = system.getStudent(rollNumber);
+        if (student != null) {
+            System.out.println("Student Name: " + student.getName());
+            System.out.println("Contact: " + student.getContact());
+        } else {
+            System.out.println("Student not found!");
+        }
+    }
+}
+
+
+
+
+
+
+This code provides a basic structure for managing students, courses, and grades within a university. You can expand upon this by adding more functionalities like user authentication, database integration, GUI using JavaFX or Swing, and so on. Each class (Student, Course, Grade) can be further extended to include more attributes and methods as per your project requirements.
